@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Results</title>
+    <style>
+        /* Center parent container */
+        .products-container {
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        /* Individual product container */
+        .product-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+
+        /* Product image */
+        .product-image {
+            width: 150px;
+            margin-right: 20px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Product image box */
+        .product-image-box {
+            height: 150px;
+            width: 150px;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Product image */
+        .product-image img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        /* Product details */
+        .product-details {
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            margin-bottom: 10px;
+        }
+
+        .analyze-reviews {
+            background-color: #f0c14b;
+            border-color: #a88734 #9c7e31 #846a29;
+            color: #111;
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+
+        .h1 {
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Style for the ratings label */
+        .ratings-label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="products-container">
+        <h1>Search Results For "{{ search_term }}" (sorted by ratings)</h1>
+        {% if product_list %}
+        {% for product in product_list %}
+
+        <div class="product-container">
+            <div class="product-image">
+                <div class="product-image-box">
+                    <img src="{{ product['image_link'] }}" alt="{{ product['title'] }}">
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-title">{{ product['title'] }}</div>
+                <div class="product-price">{{ product['price'] }}</div>
+                <div class="product-rating">
+                    <label class="ratings-label">Ratings:</label>
+                    {{ product['rating'] }}
+                </div>
+                <form method="POST" action="/review-search/{{ product['asin'] }}">
+                    <input type="hidden" id="asin" name="asin" value="{{ product['asin'] }}">
+                    <input type="submit" value="Analyze Reviews">
+                </form>
+
+            </div>
+
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No products found.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

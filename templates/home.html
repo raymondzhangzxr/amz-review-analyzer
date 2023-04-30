@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Analyzer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .parent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+            align-items: center;
+            width: 50%;
+            height: 50%;
+        }
+
+        .container {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 50px;
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 5px 5px 5px #888;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="container">
+            <h1>Amazon Reviews Analyzer</h1>
+            <form method="POST" action="/analyze">
+                <label for="product_url">Product URL:</label>
+                <input type="text" id="product_url" name="product_url"><br><br>
+                <input type="submit" value="Analyze">
+            </form>
+        </div>
+        <div class="container">
+            <h1>Search a product on amazon.com to analyze</h1>
+            <form method="POST" action="/search">
+                <label for="product_name">Product Name:</label>
+                <input type="text" id="product_name" name="product_name"><br><br>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

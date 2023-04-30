@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Analyzer Results</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: left;
+            text-align: left;
+            background-color: #f7f7f7;
+            padding: 50px;
+            border-radius: 10px;
+            width: 75%;
+            height: 75%;
+            box-shadow: 5px 5px 5px #888;
+
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ededed;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Product Analyzer Results</h1>
+        <p>URL: <a href="{{ product_url }}">{{ product_url }}</a></p>
+        <h3>Summary</h3>
+        <p>{{ summary }}</p>
+        <h3>Pros and Cons</h3>
+        <p>{{ pros_cons }}</p>
+        <h3>Recommendation</h3>
+        <p>{{ recommendation }}</p>
+        <h3>Some buy together advice</h3>
+        <p>{{ buy_together }}</p>
+        <form method="POST" action="/back">
+            <input type="submit" value="Back">
+        </form>
+    </div>
+</body>
+
+</html>
